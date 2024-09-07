@@ -23,8 +23,9 @@ urlpatterns = [
     path('api/auth/', include('dj_rest_auth.urls')),  # Login, Logout, Password Reset
     path('api/auth/registration/', include('dj_rest_auth.registration.urls')),  # User Registration
     path(
-        'api/auth/registration/account-confirm-email/<key>/',
-        ConfirmEmailView.as_view(template_name="account/email_confirm.html"),
-        name='account_confirm_email',
-    ),
+    'api/auth/registration/account-confirm-email/<key>/',
+    ConfirmEmailView.as_view(),
+    name='account_confirm_email',
+),
+
 ]
