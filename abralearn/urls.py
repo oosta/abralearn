@@ -17,15 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from allauth.account.views import ConfirmEmailView
+from core.views import CourseListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # Admin site
     path('api/auth/', include('dj_rest_auth.urls')),  # Login, Logout, Password Reset
     path('api/auth/registration/', include('dj_rest_auth.registration.urls')),  # User Registration
     path(
-    'api/auth/registration/account-confirm-email/<key>/',
-    ConfirmEmailView.as_view(),
-    name='account_confirm_email',
-),
-
+        'api/auth/registration/account-confirm-email/<key>/',
+        ConfirmEmailView.as_view(),
+        name='account_confirm_email',
+    ),
+    path('api/courses/', CourseListView.as_view(), name='course-list'),  # Update to 'api/courses/'
 ]
